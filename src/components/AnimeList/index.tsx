@@ -14,7 +14,7 @@ const AnimeList = ({ api }: any) => {
               height={600}
               className="w-full max-h-64 object-cover rounded-lg"
             />
-            <h3 className="font-medium md:text-2xl text-xl pt-6 font-samurai px-5">{anime.title}</h3>
+            <h3 className="font-medium md:text-2xl text-xl pt-6 font-samurai px-5 line-clamp-2">{anime.title}</h3>
           </Link>
         );
       })}

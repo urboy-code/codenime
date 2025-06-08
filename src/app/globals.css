@@ -1,10 +1,23 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
 
-*, *::before, *::after {
+@theme {
+  /* custom colors */
+  --color-primary: #0d0d0d;
+  --color-text-primary: #f2f2f2;
+  --color-accent: #b00020;
+
+  /* Custom Fonts */
+  --font-inter: 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-img{
+img {
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
