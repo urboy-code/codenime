@@ -3,7 +3,7 @@ import SkeletonLoading from '@/components/Skeleton/Skeleton';
 
 const loading = () => {
   return (
-    <SkeletonLoading />
+    <SkeletonLoading count={20}/>
   );
 };
 

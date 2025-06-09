@@ -1,10 +1,53 @@
-const Tren = ()=>{
+'use client';
+import HeaderMenu from '@/components/Utilities/HeaderMenu';
+import Pagination from '@/components/Utilities/Pagination';
+import { useEffect, useState } from 'react';
+import AnimeList from '@/components/AnimeList';
+import SkeletonLoading from '@/components/Skeleton/Skeleton';
+
+const Tren = () => {
+  const [page, setPage] = useState(1);
+  const [lastPage, setLasPage] = useState(1);
+  const [topAnimes, setTopAnimes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}`);
+      const data = await response.json();
+      setTopAnimes(data.data);
+      setLasPage(data.pagination?.last_visible_page || 1);
+    } catch (error) {
+      console.error('Error fetching top animes:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // Scroll ke atas saat halaman berubah
+    window.scrollTo(0, 0);
+    fetchData();
+  }, [page]); // useEffect akan berjalan setiap kali page berubah
+
+  if (isLoading) {
+    return (
+      <>
+        <HeaderMenu title={'ANIME TERPOPULER....'} />
+        <SkeletonLoading count={24} />
+      </>
+    );
+  }
+
   return (
-    <div className="tren">
-      <h1>Tren Page</h1>
-      <p>This is the Tren page content.</p>
-    </div>
+    <>
+      <HeaderMenu title={`ANIME TER-POPULER #${page}`} />
+      <Pagination page={page} lastPage={lastPage} onPageChange={setPage} />
+      <AnimeList animes={topAnimes} />
+      <Pagination page={page} lastPage={lastPage} onPageChange={setPage} />
+    </>
   );
-}
+};
 
 export default Tren;
