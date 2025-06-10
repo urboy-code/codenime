@@ -1,0 +1,6 @@
+/* === TAMBAHKAN BLOK INI UNTUK MEMPERBAIKI MASALAH TINGGI === */
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  height: 100%;
+}

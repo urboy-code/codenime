@@ -6,7 +6,7 @@ const AnimeList = ({ animes }: any) => {
     <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-8 px-12">
       {animes.map((anime: any) => {
         return (
-          <Link href={`/${anime.mal_id}`} key={anime.mal_id} className="cursor-pointer">
+          <Link href={`/anime/${anime.mal_id}`} key={anime.mal_id} className="cursor-pointer">
             <Image
               src={anime.images.webp.image_url}
               alt="Anime Image"

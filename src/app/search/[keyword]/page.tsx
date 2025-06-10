@@ -1,5 +1,6 @@
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/AnimeList/Header';
+import fetchApi from '@/libs/api';
 import Link from 'next/link';
 
 // Menambahkan tipe untuk props yang diterima halaman ini
@@ -9,35 +10,21 @@ type SearchProps = {
   };
 };
 
-const getUniqueAnimes = (animes: any) =>{
-  if(!Array.isArray(animes)) return []
-  const uniqueMap = new Map()
-  animes.forEach(anime => {
-    uniqueMap.set(anime.mal_id, anime)
-  })
-  return Array.from(uniqueMap.values())
-}
+const getUniqueAnimes = (animes: any) => {
+  if (!Array.isArray(animes)) return [];
+  const uniqueMap = new Map();
+  animes.forEach((anime) => {
+    uniqueMap.set(anime.mal_id, anime);
+  });
+  return Array.from(uniqueMap.values());
+};
 
 const Page = async ({ params }: SearchProps) => {
   const { keyword } = await params;
   const decodeKeyword = decodeURIComponent(keyword);
 
-  let uniqueAnimes = [];
-
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`);
-
-    if (!response.ok) {
-      // jika response tidak OK (misal: 404, 500), lempar error
-      throw new Error('Gagal mengambil data dari Jikan API');
-    }
-    const apiResponse = await response.json();
-    const searchAnimes = apiResponse.data
-    uniqueAnimes = getUniqueAnimes(searchAnimes);
-  } catch (error) {
-    console.error('Gagal mengambil data anime:', error);
-    // jika gagal mengambil data, mengembalikan array kosong, sehingga UI tidak crash
-  }
+  const searchResponse = await fetchApi('anime', { q: decodeKeyword, limit: 24 });
+  const uniqueAnimes = getUniqueAnimes(searchResponse?.data);
 
   return (
     <>

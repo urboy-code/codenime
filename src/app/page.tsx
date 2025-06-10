@@ -1,27 +1,19 @@
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/AnimeList/Header';
+import HeroCorousle from '@/components/HeroCorousel';
+import fetchApi from '@/libs/api';
 
 const Page = async () => {
-  let topAnimes = []
-  try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=12`);
-    if(!response.ok){
-      // Jika response tidak OK (misal: 404, 500), lempar error
-      throw new Error('Faild to fetch data')
-    }
-    const apiResponse = await response.json();
-    topAnimes = apiResponse.data
-  } catch (error){
-    console.error('Gagal mengambil data anime:', error)
-    // kalo gagal mengambil data, mengembalikan array kosong, sehingga UI tidak crash
-  }
+  const topAnimeResponse = await fetchApi('top/anime', { limit: 12 });
 
   return (
     <>
+      {/* Hero Carousel */}
+      <HeroCorousle animes={topAnimeResponse.data} />
       {/* Anime yang sedang tren */}
-      <section className='p-8'>
+      <section className="p-8">
         <Header title="Sedang Tren" linkHref="/tren" linkTitle="Lihat Semua →" />
-        <AnimeList animes={topAnimes} />
+        <AnimeList animes={topAnimeResponse.data} />
       </section>
     </>
   );

@@ -4,6 +4,7 @@ import Pagination from '@/components/Utilities/Pagination';
 import { useEffect, useState } from 'react';
 import AnimeList from '@/components/AnimeList';
 import SkeletonLoading from '@/components/Skeleton/Skeleton';
+import fetchApi from '@/libs/api';
 
 const Tren = () => {
   const [page, setPage] = useState(1);
@@ -13,16 +14,12 @@ const Tren = () => {
 
   const fetchData = async () => {
     setIsLoading(true);
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}`);
-      const data = await response.json();
-      setTopAnimes(data.data);
-      setLasPage(data.pagination?.last_visible_page || 1);
-    } catch (error) {
-      console.error('Error fetching top animes:', error);
-    } finally {
-      setIsLoading(false);
+    const trenResponse = await fetchApi('top/anime', { page: page, limit: 24 });
+    if (trenResponse) {
+      setTopAnimes(trenResponse.data);
+      setLasPage(trenResponse.pagination?.last_visible_page || 1);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
