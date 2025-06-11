@@ -1,5 +1,4 @@
 import CardSkeleton from './CardSkeleton';
-import HeroSkeleton from './HeroSkeleton';
 const SkeletonLoading = ({ count = 12 }) => {
   return (
     <main>

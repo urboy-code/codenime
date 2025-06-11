@@ -1,6 +1,6 @@
 import React from 'react'
-import SkeletonLoading from '@/components/Skeleton/Skeleton'
-import HeroSkeleton from '@/components/Skeleton/HeroSkeleton';
+import SkeletonLoading from '@/src/components/Skeleton/Skeleton'
+import HeroSkeleton from '@/src/components/Skeleton/HeroSkeleton'
 
 
 const loading = () => {

@@ -1,6 +1,6 @@
-import NotFound from '@/app/not-found';
-import VideoPlayer from '@/components/VideoPlayer';
-import fetchApi from '@/libs/api';
+import NotFound from '@/src/app/not-found';
+import VideoPlayer from '@/src/components/VideoPlayer';
+import fetchApi from '@/src/libs/api';
 import Image from 'next/image';
 
 const AnimeDetailPage = async ({ params }: { params: { id: string } }) => {

@@ -26,7 +26,7 @@ const InputSearch = () => {
       <input
         type="text"
         placeholder="Cari"
-        className="w-full h-18 pl-15 bg-text-primary text-primary rounded-xl text-xl focus:outline-none"
+        className="w-full h-12 pl-15 bg-text-primary text-primary rounded-xl text-xl focus:outline-none"
         ref={searchRef}
       />
     </form>

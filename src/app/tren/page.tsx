@@ -1,10 +1,10 @@
 'use client';
-import HeaderMenu from '@/components/Utilities/HeaderMenu';
-import Pagination from '@/components/Utilities/Pagination';
+import HeaderMenu from '@/src/components/Utilities/HeaderMenu';
+import Pagination from '@/src/components/Utilities/Pagination';
 import { useEffect, useState } from 'react';
-import AnimeList from '@/components/AnimeList';
-import SkeletonLoading from '@/components/Skeleton/Skeleton';
-import fetchApi from '@/libs/api';
+import AnimeList from '@/src/components/AnimeList';
+import SkeletonLoading from '@/src/components/Skeleton/Skeleton';
+import fetchApi from '@/src/libs/api';
 
 const Tren = () => {
   const [page, setPage] = useState(1);
