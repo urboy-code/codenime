@@ -1,5 +1,6 @@
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/AnimeList/Header';
+import HeroCorousle from '@/components/HeroCorousel';
 import fetchApi from '@/libs/api';
 import Link from 'next/link';
 
@@ -28,6 +29,7 @@ const Page = async ({ params }: SearchProps) => {
 
   return (
     <>
+      <HeroCorousle animes={uniqueAnimes} />
       {/* Hasil Pencarian Anime */}
       <section className="p-8">
         <Header title={decodeKeyword} />

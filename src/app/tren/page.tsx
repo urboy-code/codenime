@@ -30,20 +30,20 @@ const Tren = () => {
 
   if (isLoading) {
     return (
-      <>
+      <div>
         <HeaderMenu title={'ANIME TERPOPULER....'} />
         <SkeletonLoading count={24} />
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="md:mt-32">
       <HeaderMenu title={`ANIME TER-POPULER #${page}`} />
       <Pagination page={page} lastPage={lastPage} onPageChange={setPage} />
       <AnimeList animes={topAnimes} />
       <Pagination page={page} lastPage={lastPage} onPageChange={setPage} />
-    </>
+    </div>
   );
 };
 

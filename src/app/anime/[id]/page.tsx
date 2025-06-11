@@ -74,7 +74,7 @@ const AnimeDetailPage = async ({ params }: { params: { id: string } }) => {
       </div>
 
       {/* Konten Bawah Banner */}
-      <div className="container mx-auto grid grid-cols-1 gap-12 px-4 py-8 md:grid-cols-3 md:px-12">
+      <div className="container grid grid-cols-1 mx-auto gap-12 px-4 py-8 md:grid-cols-3 md:px-12">
         {/*  */}
         <div className="md:col-span-2">
           <h2 className="mb-4 text-2xl font-semibold">Synopsis</h2>

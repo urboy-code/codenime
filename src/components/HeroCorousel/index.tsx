@@ -27,7 +27,7 @@ type HeroCorouselProps = {
 
 const HeroCorousle = ({ animes }: HeroCorouselProps) => {
   return (
-    <div className="h-[50vh] w-full md:h-[80vh]">
+    <div className="h-[50vh] w-full md:h-[80vh] hidden md:block">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         slidesPerView={1}

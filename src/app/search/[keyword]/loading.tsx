@@ -1,9 +1,13 @@
 import React from 'react';
 import SkeletonLoading from '@/components/Skeleton/Skeleton';
+import HeroSkeleton from '@/components/Skeleton/HeroSkeleton';
 
 const loading = () => {
   return (
-    <SkeletonLoading count={20}/>
+    <div>
+      <HeroSkeleton />
+      <SkeletonLoading count={20} />
+    </div>
   );
 };
 

@@ -1,12 +1,15 @@
 import CardSkeleton from './CardSkeleton';
+import HeroSkeleton from './HeroSkeleton';
 const SkeletonLoading = ({ count = 12 }) => {
   return (
-    <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-4 px-12">
-      {Array.from({ length: count }).map((_, index) => (
-        <CardSkeleton key={index} />
-      ))}
-      <CardSkeleton />
-    </div>
+    <main>
+      <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-4 px-12 mt-6">
+        {Array.from({ length: count }).map((_, index) => (
+          <CardSkeleton key={index} />
+        ))}
+        <CardSkeleton />
+      </div>
+    </main>
   );
 };
 

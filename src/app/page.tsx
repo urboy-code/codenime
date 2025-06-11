@@ -12,7 +12,7 @@ const Page = async () => {
       <HeroCorousle animes={topAnimeResponse.data} />
       {/* Anime yang sedang tren */}
       <section className="p-8">
-        <Header title="Sedang Tren" linkHref="/tren" linkTitle="Lihat Semua →" />
+        <Header title="Anime Popular" linkHref="/tren" linkTitle="Lihat Semua →" />
         <AnimeList animes={topAnimeResponse.data} />
       </section>
     </>
