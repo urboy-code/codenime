@@ -1,7 +1,6 @@
-import React from 'react'
-import SkeletonLoading from '@/src/components/Skeleton/Skeleton'
-import HeroSkeleton from '@/src/components/Skeleton/HeroSkeleton'
-
+import React from 'react';
+import SkeletonLoading from '@/components/Skeleton/Skeleton';
+import HeroSkeleton from '@/components/Skeleton/HeroSkeleton';
 
 const loading = () => {
   return (
@@ -10,6 +9,6 @@ const loading = () => {
       <SkeletonLoading count={11} />
     </div>
   );
-}
+};
 
-export default loading
+export default loading;

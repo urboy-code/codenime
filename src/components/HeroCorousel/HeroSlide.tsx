@@ -35,7 +35,7 @@ const HeroSlide = ({ anime }: HeroSlideProps) => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-primary)]" />
 
       {/* Konten teks di atasnya */}
-      <div className="relative z-10 flex flex-col h-full justify-center items-start px-12 md:p-12">
+      <div className="container relative z-10 flex flex-col h-full justify-center items-start mx-auto">
         <h2 className="text-2xl font-bold text-white drop-shadow-lg md:text-5xl lg:text-7xl">{anime.title}</h2>
         <p className="mt-4 max-w-2xl text-xl text-slate-200 drop-shadow-lg">{anime.synopsis?.substring(0, 200)}...</p>
         <Link

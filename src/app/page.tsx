@@ -1,7 +1,7 @@
-import AnimeList from '@/src/components/AnimeList';
-import Header from '@/src/components/AnimeList/Header';
-import HeroCorousle from '@/src/components/HeroCorousel';
-import fetchApi from '@/src/libs/api';
+import AnimeList from '@/components/AnimeList';
+import Header from '@/components/AnimeList/Header';
+import HeroCorousle from '@/components/HeroCorousel';
+import fetchApi from '@/libs/api';
 
 const shuffleArray = (array: any[]) => {
   const shuffled = [...array];
@@ -43,11 +43,11 @@ const Page = async () => {
       <HeroCorousle animes={topAnimes} />
       <div>
         {/* Anime yang sedang tren */}
-        <section className="p-8">
+        <section className="">
           <Header title="Anime Popular" linkHref="/tren" linkTitle="Lihat Semua →" />
           <AnimeList animes={topAnimes} />
         </section>
-        <section className="p-8 mt-32">
+        <section className="mt-32">
           <Header title="Rekomendasi Anime" />
           <AnimeList animes={recomendationsAnime} />
         </section>

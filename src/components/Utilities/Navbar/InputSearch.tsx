@@ -9,13 +9,13 @@ const InputSearch = () => {
     event.preventDefault();
     const value = searchRef.current?.value;
 
-    if (!value || value.trim() === '') return
+    if (!value || value.trim() === '') return;
 
     router.push(`/search/${value}`);
   };
 
   return (
-    <form onSubmit={handleSearch} className="relative w-full md:w-1/2 sm:w-full py-5">
+    <form onSubmit={handleSearch} className="relative w-full md:w-1/2 md:max-w-md sm:w-full order-3 md:order-2">
       <button
         onClick={handleSearch}
         type="submit"
