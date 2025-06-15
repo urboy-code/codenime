@@ -1,4 +1,6 @@
 import NotFound from '@/app/not-found';
+import { auth } from '@/auth';
+import CardCollectionButton from '@/components/AnimeList/CardCollectionButton';
 import VideoPlayer from '@/components/VideoPlayer';
 import fetchApi from '@/libs/api';
 import Image from 'next/image';

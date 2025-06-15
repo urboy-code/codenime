@@ -57,8 +57,11 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
       {/* Menu dropdown */}
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-non z-10">
-          <Link href={'/dashboard'} className="block px-4 py-2 text-sm text-slate-200">
+          <Link href={'/profile'} className="block px-4 py-2 text-sm text-slate-200">
             Profil
+          </Link>
+          <Link href={'/dashboard'} className="block px-4 py-2 text-sm text-slate-200">
+            Dashboard
           </Link>
           <SignOutButton />
         </div>

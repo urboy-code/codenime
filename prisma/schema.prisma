@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Model untuk menyimpan koleksi anime pengguna
+model Collection {
+  id           Int     @id @default(autoincrement())
+  anime_mal_id String // ID anime dari MyAnimeList
+  user_email   String // Email pengguna untuk relasi
+  user         User    @relation(fields: [user_email], references: [email])
+
+  anime_image String? // URL gambar anime
+  anime_title String? // Judul anime
+
+  // Membuat kombinasi anime_mal_id dan user_email menjadi unik
+  // agar satu user tidak bisa menambahkan anime yang sama berulang kali.
+  @@unique([anime_mal_id, user_email])
+}
+
+
+// Model-model di bawah ini WAJIB ADA untuk Next-Auth Prisma Adapter
+// Jangan diubah kecuali kamu tahu apa yang kamu lakukan.
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  // --- PERBAIKAN DI SINI: Hapus @db.Text ---
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model User {
+  id            String       @id @default(cuid())
+  name          String?
+  email         String?      @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  collections   Collection[] // Relasi ke model Collection kita
+}
