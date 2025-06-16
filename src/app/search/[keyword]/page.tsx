@@ -1,7 +1,7 @@
-import AnimeList from '@/src/components/AnimeList';
-import Header from '@/src/components/AnimeList/Header';
-import HeroCorousle from '@/src/components/HeroCorousel';
-import fetchApi from '@/src/libs/api';
+import AnimeList from '@/components/AnimeList';
+import Header from '@/components/AnimeList/Header';
+import HeroCorousle from '@/components/HeroCorousel';
+import fetchApi from '@/libs/api';
 import Link from 'next/link';
 
 // Menambahkan tipe untuk props yang diterima halaman ini

@@ -1,3 +1,4 @@
+import { auth } from '@/auth';
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/AnimeList/Header';
 import HeroCorousle from '@/components/HeroCorousel';
@@ -27,6 +28,24 @@ const Page = async () => {
   const topAnimeResponse = await fetchApi('top/anime', { limit: 12 });
   const topAnimes = topAnimeResponse?.data;
 
+  const session = await auth();
+
+  const userCollections = session
+    ? await prisma?.collection.findMany({
+        where: { user_email: session.user?.email! },
+        select: { anime_mal_id: true },
+      })
+    : [];
+
+  const userCollectionIds = new Set(userCollections?.map((item) => item.anime_mal_id));
+
+  const animesWithCollectionStatus = topAnimes.map((anime) => {
+    return {
+      ...anime,
+      isInCollection: userCollectionIds.has(anime.mal_id.toString()),
+    };
+  });
+
   const recomendationsResposne = await fetchApi('recommendations/anime');
   const rawRecomendations = recomendationsResposne?.data || [];
 
@@ -45,7 +64,7 @@ const Page = async () => {
         {/* Anime yang sedang tren */}
         <section className="">
           <Header title="Anime Popular" linkHref="/tren" linkTitle="Lihat Semua →" />
-          <AnimeList animes={topAnimes} />
+          <AnimeList animes={animesWithCollectionStatus} />
         </section>
         <section className="mt-32">
           <Header title="Rekomendasi Anime" />

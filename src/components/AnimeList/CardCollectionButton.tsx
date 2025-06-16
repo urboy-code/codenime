@@ -2,6 +2,7 @@
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { addToCollection } from '@/libs/actions/collection.action';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 type CardCollectionButtonProps = {
   anime_mal_id: string;
@@ -15,8 +16,12 @@ const CardCollectionButton = ({ anime_mal_id, anime_image, anime_title }: CardCo
 
     const result = await addToCollection(anime_mal_id, anime_image, anime_title);
 
-    if (result) {
-      alert(result.message);
+    if (result.status === 'success') {
+      toast.success(result.message);
+    } else if (result.status === 'info') {
+      toast(result.message, { icon: 'ℹ️' });
+    } else {
+      toast.error(result.message);
     }
   };
 

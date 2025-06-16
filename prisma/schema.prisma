@@ -20,6 +20,8 @@ model Collection {
   anime_image String? // URL gambar anime
   anime_title String? // Judul anime
 
+  is_favorite Boolean @default(false)
+
   // Membuat kombinasi anime_mal_id dan user_email menjadi unik
   // agar satu user tidak bisa menambahkan anime yang sama berulang kali.
   @@unique([anime_mal_id, user_email])

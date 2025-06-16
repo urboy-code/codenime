@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import Navbar from '@/components/Utilities/Navbar';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased bg-primary text-text-primary font-inter`}>
         <SessionProvider>
+          <Toaster position='top-center' reverseOrder={false} />
           <Navbar />
           {children}
         </SessionProvider>

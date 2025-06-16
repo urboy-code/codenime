@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CardCollectionButton from './CardCollectionButton';
+import FavoritButton from './FavoritButton';
+import RemoveCollectionButton from './RemoveCollectionButton';
 
 type Anime = {
   mal_id: number;
@@ -10,13 +12,16 @@ type Anime = {
       image_url: string;
     };
   };
+  is_favorite?: boolean;
+  isInCollection?: boolean;
 };
 
 type AnimeListProps = {
   animes: Anime[];
+  isDashboard?: boolean;
 };
 
-const AnimeList = ({ animes }: AnimeListProps) => {
+const AnimeList = ({ animes, isDashboard = false }: AnimeListProps) => {
   return (
     <div className="container mx-auto grid grid-cols-2 gap-5 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {animes?.map((anime) => (
@@ -34,12 +39,23 @@ const AnimeList = ({ animes }: AnimeListProps) => {
             <h3 className="font-medium md:text-xl text-xl mt-2 line-clamp-2 hover:text-accent">{anime.title}</h3>
           </Link>
 
-          <div>
-            <CardCollectionButton
-              anime_mal_id={anime.mal_id.toString()}
-              anime_image={anime.images.webp.image_url}
-              anime_title={anime.title}
-            />
+          <div className="">
+            {isDashboard ? (
+              <div className="opacity-100 flex flex-col gap-2 p-2">
+                <FavoritButton mal_id={anime.mal_id.toString()} is_favorite={anime.is_favorite ?? false} />
+                <RemoveCollectionButton mal_id={anime.mal_id.toString()} />
+              </div>
+            ) : (
+              <div className="opacity-100 transition-opacity group-hover:opacity-100">
+                {!anime.isInCollection && (
+                  <CardCollectionButton
+                    anime_mal_id={anime.mal_id.toString()}
+                    anime_image={anime.images.webp.image_url}
+                    anime_title={anime.title}
+                  />
+                )}
+              </div>
+            )}
           </div>
         </div>
       ))}

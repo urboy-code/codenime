@@ -66,3 +66,39 @@ export async function addToCollection(anime_mal_id: string, anime_image: string,
     };
   }
 }
+
+export async function removeFromCollection(anime_mal_id: string) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    return {
+      status: 'error',
+      message: 'Anda harus login terlebih dahulu.',
+    };
+  }
+
+  const user_email = session.user.email;
+
+  try {
+    await prisma.collection.delete({
+      where: {
+        anime_mal_id_user_email: {
+          user_email,
+          anime_mal_id,
+        },
+      },
+    });
+
+    revalidatePath('/dashboard');
+    return {
+      status: 'success',
+      message: 'Anime berhasil dihapus dari koleksi.',
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      status: 'error',
+      message: 'Terjadi kesalahan saat menghapus anime dari koleksi.',
+    };
+  }
+}
