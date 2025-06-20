@@ -15,7 +15,7 @@ const InputSearch = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="relative w-full md:w-1/2 md:max-w-md sm:w-full order-3 md:order-2">
+    <form onSubmit={handleSearch} className="relative md:max-w-md sm:w-full order-3 md:order-2">
       <button
         onClick={handleSearch}
         type="submit"
@@ -26,7 +26,7 @@ const InputSearch = () => {
       <input
         type="text"
         placeholder="Cari"
-        className="w-full h-12 pl-15 bg-text-primary text-primary rounded-xl text-xl focus:outline-none"
+        className="w-full md:w-1/2 h-12 pl-15 bg-text-primary text-primary rounded-xl text-xl focus:outline-none"
         ref={searchRef}
       />
     </form>

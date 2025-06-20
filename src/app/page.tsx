@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
-import AnimeList from '@/components/AnimeList';
-import Header from '@/components/AnimeList/Header';
-import HeroCorousle from '@/components/HeroCorousel';
+import AnimeList from '@/components/anime/AnimeList';
+import Header from '@/components/anime/Header';
+import HeroCorousle from '@/components/ui/HeroCorousel';
 import fetchApi from '@/libs/api';
 
 const shuffleArray = (array: any[]) => {
@@ -26,7 +26,7 @@ const getUniqueAnimes = (animes: any[]) => {
 
 const Page = async () => {
   const topAnimeResponse = await fetchApi('top/anime', { limit: 12 });
-  const topAnimes = topAnimeResponse?.data;
+  const topAnimes = topAnimeResponse?.data || [];
 
   const session = await auth();
 
@@ -39,7 +39,7 @@ const Page = async () => {
 
   const userCollectionIds = new Set(userCollections?.map((item) => item.anime_mal_id));
 
-  const animesWithCollectionStatus = topAnimes.map((anime) => {
+  const animesWithCollectionStatus = topAnimes.map((anime: any) => {
     return {
       ...anime,
       isInCollection: userCollectionIds.has(anime.mal_id.toString()),

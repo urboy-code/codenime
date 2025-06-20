@@ -4,8 +4,8 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const CardSkeleton = () => {
   return (
     // Wrapper satu kartu
-    <div>
-      <Skeleton height={240} />
+    <div className='bg-slate-600'>
+      <Skeleton height={190} />
       <Skeleton height={20} className="mt-2" />
     </div>
   );

@@ -1,5 +1,5 @@
 'use client';
-import { addFavorite } from '@/libs/actions/favorit.action';
+import { addFavorite } from '@/libs/actions/collection.action';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/20/solid';
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';

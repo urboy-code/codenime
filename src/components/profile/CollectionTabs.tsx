@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
-import AnimeList from '../AnimeList';
+import AnimeList from '../anime/AnimeList';
 
 type CollectionItem = {
   id: number;

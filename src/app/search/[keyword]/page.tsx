@@ -1,6 +1,6 @@
-import AnimeList from '@/components/AnimeList';
-import Header from '@/components/AnimeList/Header';
-import HeroCorousle from '@/components/HeroCorousel';
+import AnimeList from '@/components/anime/AnimeList';
+import Header from '@/components/anime/Header';
+import HeroCorousle from '@/components/ui/HeroCorousel';
 import fetchApi from '@/libs/api';
 import Link from 'next/link';
 

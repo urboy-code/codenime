@@ -1,12 +1,7 @@
 import Link from 'next/link';
-import localFont from 'next/font/local';
 import InputSearch from './InputSearch';
 import { auth } from '@/auth';
 import { UserActionButton } from './UserActioButton';
-
-const samurai = localFont({
-  src: '../fonts/ShogunsClan.ttf',
-});
 
 const Navbar = async () => {
   const session = await auth();

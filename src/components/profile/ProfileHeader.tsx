@@ -11,7 +11,7 @@ type ProfileHeaderProps = {
 const ProfileHeader = ({ user }: ProfileHeaderProps) => {
   return (
     <div>
-      <div className="relative h-72 w-full bg-slate-700"></div>
+      <div className="relative md:h-72 h-36 w-full bg-slate-700"></div>
 
       {/* profile pic & nama */}
       <div className="container mx-auto">

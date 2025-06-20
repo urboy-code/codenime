@@ -3,13 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { SignOutButton } from '@/components/AuthButton/sign-out-button';
+import { SignOutButton } from '@/components/auth/sign-out-button';
 
 type ProfileDropdownProps = {
   user: {
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
+    name: string;
+    email: string;
+    image: string;
   };
 };
 
@@ -44,7 +44,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
 
   return (
     <div className="relative order-2 md:order-3">
-      <button onClick={handleToggle} className='rounded-full'>
+      <button onClick={handleToggle} className="rounded-full">
         <Image
           src={user.image ?? ''}
           alt={user.name ?? 'user avatar'}

@@ -1,10 +1,21 @@
 'use client';
-import HeaderMenu from '@/src/components/Utilities/HeaderMenu';
-import Pagination from '@/src/components/Utilities/Pagination';
+import HeaderMenu from '@/components/ui/HeaderMenu';
+import Pagination from '@/components/ui/Pagination';
 import { useEffect, useState } from 'react';
-import AnimeList from '@/src/components/AnimeList';
-import SkeletonLoading from '@/src/components/Skeleton/Skeleton';
-import fetchApi from '@/src/libs/api';
+import AnimeList from '@/components/anime/AnimeList';
+import SkeletonLoading from '@/components/ui/Skeleton';
+import fetchApi from '@/libs/api';
+
+const getUniqueAnimes = (animes: any) => {
+  if (!Array.isArray(animes)) return [];
+  const uniqueMap = new Map();
+  animes.forEach((anime) => {
+    if (anime && anime.mal_id) {
+      uniqueMap.set(anime.mal_id, anime);
+    }
+  });
+  return Array.from(uniqueMap.values());
+};
 
 const Tren = () => {
   const [page, setPage] = useState(1);
@@ -15,8 +26,9 @@ const Tren = () => {
   const fetchData = async () => {
     setIsLoading(true);
     const trenResponse = await fetchApi('top/anime', { page: page, limit: 24 });
-    if (trenResponse) {
-      setTopAnimes(trenResponse.data);
+    const uniqueAnime = getUniqueAnimes(trenResponse?.data);
+    if (uniqueAnime) {
+      setTopAnimes(uniqueAnime);
       setLasPage(trenResponse.pagination?.last_visible_page || 1);
     }
     setIsLoading(false);
@@ -30,7 +42,7 @@ const Tren = () => {
 
   if (isLoading) {
     return (
-      <div>
+      <div className="md:mt-32">
         <HeaderMenu title={'ANIME TERPOPULER....'} />
         <SkeletonLoading count={24} />
       </div>

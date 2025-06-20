@@ -3,7 +3,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 const HeroSkeleton = () => {
   return (
-    <div className="h-[50vh] w-full md:h-[80vh] bg-slate-800 animate-pulse">
+    <div className="h-[50vh] w-full md:h-[80vh] bg-slate-800 animate-pulse hidden md:block">
       <div className="relative z-10 flex h-full flex-col justify-center items-start px-12">
         <Skeleton height={40} width={`60%`} baseColor="#334155" highlightColor="#475569" />
         <div className='mt-4 w-full max-w-2xl'>
