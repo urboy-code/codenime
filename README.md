@@ -1,6 +1,6 @@
 # 🎬 Codenime - Aplikasi Pelacak & Koleksi Anime
 
-![Codenime Showcase](https://placehold.co/1200x600/0d0d0d/f2f2f2?text=Screenshot+Proyek+Codenime)
+![Codenime Showcase](./.github/assets/1920x1080-homepage-codenime-styled_v2.png)
 
 **Codenime** adalah aplikasi web full-stack modern yang dibangun dengan Next.js App Router, memungkinkan pengguna untuk menjelajahi, mengoleksi, dan melacak anime favorit mereka. Proyek ini bukan sekadar website tampilan, melainkan sebuah platform interaktif dengan sistem otentikasi, manajemen database, dan fungsionalitas CRUD yang lengkap.
 
