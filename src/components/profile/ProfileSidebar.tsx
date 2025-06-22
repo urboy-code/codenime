@@ -5,6 +5,8 @@ type ProfileSidebarProps = {
   user: {
     name?: string | null;
     email?: string | null;
+    bio?: string | null;
+    createdAt?: Date | null;
   };
 };
 export const ProfileSidebar = ({ user }: ProfileSidebarProps) => {
@@ -17,11 +19,11 @@ export const ProfileSidebar = ({ user }: ProfileSidebarProps) => {
         <div className="mt-4 space-y-2 text-sm text-slate-300">
           <div className="flex items-center gap-2">
             <UserIcon className="h-4 w-4" />
-            <span>Bio user.......</span>
+            <span className="text-slate-400">{user.bio}</span>
           </div>
           <div className="flex items-center gap-2">
             <CalendarIcon className="h-4 w-4" />
-            <span>Bergabung......</span>
+            <span>{user.createdAt?.toLocaleString()}</span>
           </div>
         </div>
       </div>

@@ -1,9 +1,7 @@
 'use client';
-
-import { SignOutButton } from '@/components/auth/sign-out-button';
-import { ProfileDropdown } from '@/components/auth/ProfileDropDown';
-import { useLoginModalStore } from '@/stores/useLoginModalStore';
 import { useSession } from 'next-auth/react';
+import { ProfileDropdown } from '@/components/profile/ProfileDropDown';
+import { useLoginModalStore } from '@/stores/useLoginModalStore';
 
 export const UserActionButton = () => {
   const { data: session, status } = useSession();
@@ -13,7 +11,7 @@ export const UserActionButton = () => {
     return <div className="order-2 md:order-3 bg-slate-600 h-8 w-24 rounded-lg animate-pulse"></div>;
   }
 
-  if (status === 'authenticated') {
+  if (status === 'authenticated' && session.user) {
     return <ProfileDropdown user={session.user} />;
   }
 

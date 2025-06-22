@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
       {
         hostname: 'lh3.googleusercontent.com',
       },
+      {
+        hostname: 'awtpg6qnzjnyg0he.public.blob.vercel-storage.com',
+      },
     ],
   },
 };
