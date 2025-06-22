@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 Codenime - Aplikasi Pelacak & Koleksi Anime
 
-## Getting Started
+![Codenime Showcase](https://placehold.co/1200x600/0d0d0d/f2f2f2?text=Screenshot+Proyek+Codenime)
 
-First, run the development server:
+**Codenime** adalah aplikasi web full-stack modern yang dibangun dengan Next.js App Router, memungkinkan pengguna untuk menjelajahi, mengoleksi, dan melacak anime favorit mereka. Proyek ini bukan sekadar website tampilan, melainkan sebuah platform interaktif dengan sistem otentikasi, manajemen database, dan fungsionalitas CRUD yang lengkap.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**[Link ke Demo Langsung][soon] • [Laporkan Bug](https://github.com/urboy-code/CRUD-NEXTJS/issues) • [Minta Fitur Baru](https://github.com/urboy-code/CRUD-NEXTJS/issues)**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌟 Fitur Utama
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   **Otentikasi Multi-Provider:** Login & registrasi aman menggunakan **GitHub** dan **Google** via Next-Auth (Auth.js v5).
+-   **Koleksi Anime Pribadi:** Pengguna dapat menambah, melihat, dan menghapus anime dari koleksi pribadi mereka.
+-   **Sistem Favorit:** Fungsionalitas untuk menandai anime sebagai favorit di dalam koleksi.
+-   **Manajemen Profil Pengguna:** Halaman profil khusus di mana pengguna dapat mengedit nama, bio, dan **meng-upload foto profil** baru.
+-   **Upload Gambar Modern:** Sistem upload avatar menggunakan **Vercel Blob** dengan fitur hapus otomatis untuk file lama.
+-   **Rekomendasi Dinamis:** Halaman utama menampilkan rekomendasi anime yang diacak setiap kali di-refresh untuk penemuan konten baru.
+-   **Pencarian & Detail Anime:** Pencarian anime secara *real-time* dan halaman detail yang informatif, mengambil data dari Jikan API.
+-   **UI Profesional & Responsif:**
+    -   Desain modern dengan **Glassmorphism** pada modal login.
+    -   Layout yang sepenuhnya responsif untuk desktop, tablet, dan mobile (termasuk mode landscape).
+    -   Notifikasi **Toast** untuk setiap aksi pengguna.
+    -   **Loading Skeletons** yang komprehensif untuk mencegah *layout shift*.
 
-## Learn More
+## 🛠️ Dibangun Dengan (Tech Stack)
 
-To learn more about Next.js, take a look at the following resources:
+* **Framework:** [Next.js](https://nextjs.org/) 14+ (App Router)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Database:** [MySQL](https://www.mysql.com/) / [Vercel Postgres](https://vercel.com/storage/postgres) (untuk deployment)
+* **ORM:** [Prisma](https://www.prisma.io/)
+* **Otentikasi:** [Next-Auth (Auth.js v5)](https://authjs.dev/)
+* **Penyimpanan File:** [Vercel Blob](https://vercel.com/storage/blob)
+* **State Management (UI):** [Zustand](https://zustand-demo.pmnd.rs/) (untuk modal login)
+* **Notifikasi:** [React Hot Toast](https://react-hot-toast.com/)
+* **API Data Anime:** [Jikan API](https://jikan.moe/)
+* **Deployment:** [Vercel](https://vercel.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Memulai (Getting Started)
 
-## Deploy on Vercel
+Untuk menjalankan proyek ini di komputermu, ikuti langkah-langkah berikut.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prasyarat
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pastikan kamu sudah menginstal Node.js (v18 atau lebih baru) dan sebuah server database (seperti MySQL atau gunakan Vercel Postgres).
+
+### Instalasi
+
+1.  **Clone repositori ini:**
+    ```bash
+    git clone [https://github.com/urboy-code/CRUD-NEXTJS.git](https://github.com/urboy-code/CRUD-NEXTJS.git)
+    cd CRUD-NEXTJS
+    ```
+
+2.  **Install semua dependensi:**
+    ```bash
+    npm install
+    ```
+
+3.  **Setup Environment Variables:**
+    * Buat file baru bernama `.env.local` di root folder proyek.
+    * Salin isi dari file `.env.example` (jika ada) atau isi dengan variabel berikut:
+        ```env
+        # URL Database (sesuaikan dengan database-mu)
+        DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE"
+
+        # Kunci Rahasia untuk Next-Auth (buat string acak yang panjang)
+        AUTH_SECRET="your_super_secret_string"
+
+        # Kunci dari GitHub OAuth App
+        AUTH_GITHUB_ID="your_github_client_id"
+        AUTH_GITHUB_SECRET="your_github_client_secret"
+
+        # Kunci dari Google OAuth App
+        AUTH_GOOGLE_ID="your_google_client_id"
+        AUTH_GOOGLE_SECRET="your_google_client_secret"
+        
+        # URL Aplikasi (untuk development)
+        NEXTAUTH_URL="http://localhost:3000"
+        ```
+
+4.  **Jalankan Migrasi Database:**
+    Perintah ini akan membuat semua tabel yang dibutuhkan di databasemu berdasarkan `prisma/schema.prisma`.
+    ```bash
+    npx prisma migrate dev
+    ```
+
+5.  **Jalankan Server Development:**
+    ```bash
+    npm run dev
+    ```
+
+Buka [http://localhost:3000](http://localhost:3000) di browser-mu untuk melihat hasilnya.
+
+---
+
+## 🤝 Berkontribusi
+
+Kontribusi, isu, dan permintaan fitur sangat diterima! Jangan ragu untuk membuat *issue* atau *pull request*.
+
+## 📄 Lisensi
+
+Didistribusikan di bawah Lisensi MIT. Lihat `LICENSE` untuk informasi lebih lanjut.
+
