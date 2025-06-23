@@ -10,7 +10,7 @@
 
 ## 🌟 Fitur Utama
 
--   **Otentikasi Multi-Provider:** Login & registrasi aman menggunakan **GitHub** dan **Google** via Next-Auth (Auth.js v5).
+-   **Otentikasi Multi-Provider:** Login & registrasi aman menggunakan **GitHub** dan **Google** via Next-Auth (Auth.js v5)
 -   **Koleksi Anime Pribadi:** Pengguna dapat menambah, melihat, dan menghapus anime dari koleksi pribadi mereka.
 -   **Sistem Favorit:** Fungsionalitas untuk menandai anime sebagai favorit di dalam koleksi.
 -   **Manajemen Profil Pengguna:** Halaman profil khusus di mana pengguna dapat mengedit nama, bio, dan **meng-upload foto profil** baru.
